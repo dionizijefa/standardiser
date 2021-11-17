@@ -165,30 +165,3 @@ def run(input_mol, output_rules_applied=None, verbose=False):
 
         return Chem.MolToSmiles(parent, isomericSmiles=True)
 
-# run
-
-######
-
-# Check for availability of timeout before enabling (see above for details)...
-
-import platform
-
-if platform.system() == 'Windows':
-
-    logger.warning("Running under Windows: must disable use of timeout")
-
-else:
-
-    try:
-
-        from mod_wsgi import version
-
-        logger.warning("Running under mod_wsgi: must disable use of timeout")
-
-    except:
-
-        run = timeout()(run)
-
-####################################################################################################
-# End
-####################################################################################################
